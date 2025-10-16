@@ -7,44 +7,48 @@
     <link rel="stylesheet" href="style.css" class="style">
 </head>
 <body>
-    <div class="board">
-        <div class="column" id="todo">
-            <h2>Todo</h2>
-            <div class="tasks" id="todo-tasks"></div>
-            <input
-                type="text"
-                class="task-input"
-                id="todo-input"
-                placeholder="Add a task"
-            />
-            <button class="add-task">Add Task</button>
-        </div>
+    <div class="container">
+        <h1 class="heading">Kanban Board</h1>
 
         <div class="board">
-        <div class="column" id="doing">
-            <h2>Doing</h2>
-            <div class="tasks" id="doing-tasks"></div>
-            <input
-                type="text"
-                class="task-input"
-                id="doing-input"
-                placeholder="Add a task"
-            />
-            <button class="add-task">Add Task</button>
-        </div>
+            <div class="column" id="todo">
+                <h2>Todo</h2>
+                <div class="tasks" id="todo-tasks"></div>
+                <input
+                    type="text"
+                    class="task-input"
+                    id="todo-input"
+                    placeholder="Add a task"
+                />
+                <button class="add-task">Add Task</button>
+            </div>
 
-        <div class="board">
-        <div class="column" id="done">
-            <h2>Done</h2>
-            <div class="tasks" id="done-tasks"></div>
-            <input
-                type="text"
-                class="task-input"
-                id="done-input"
-                placeholder="Add a task"
-            />
-            <button class="add-task">Add Task</button>
+            <div class="column" id="doing">
+                <h2>Doing</h2>
+                <div class="tasks" id="doing-tasks"></div>
+                <input
+                    type="text"
+                    class="task-input"
+                    id="doing-input"
+                    placeholder="Add a task"
+                />
+                <button class="add-task">Add Task</button>
+            </div>
+
+            <div class="column" id="done">
+                <h2>Done</h2>
+                <div class="tasks" id="done-tasks"></div>
+                <input
+                    type="text"
+                    class="task-input"
+                    id="done-input"
+                    placeholder="Add a task"
+                />
+                <button class="add-task">Add Task</button>
+            </div>
+
         </div>
+        <p class="footer">Made with ❤️ by Abhishek.</p>
 
     </div>
 
