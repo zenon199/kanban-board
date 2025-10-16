@@ -1,45 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-body{
-    background-color: slategray;
-    color: white;
-}
-
-.container {
+body {
+    font-family: "Roboto", sans-serif;
     display: flex;
-    gap: 25px;
-    padding: 15px;
     justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #222831;
 }
 
 .board {
-    
-    border: .5px solid #e4e4e4;
-    height: 70vh;
-    width: 43vh;
+    display: flex;
+    gap: 20px;
+}
+
+.column {
+    background-color: #393e46;
+    width: 300px;
+    min-height: 400px;
     padding: 20px;
-    border-radius: 10px;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;;
+    border-radius: 12px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
 
-.cards{
-    margin-top: 25px;
+.column h2 {
+    text-align: center;
+    color: #fff;
+    margin-bottom: 20px;
 }
 
-.item {
-    border: 1px solid;
-    border-radius: 3px;
-    padding: 20px 15px;
-    margin-top: 10px;
-    cursor: pointer;
-}
-.item:hover {
-    background-color: aqua;
-    color: black;
+.tasks {
+    min-height: 400px;
 }

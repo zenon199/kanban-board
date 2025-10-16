@@ -7,24 +7,45 @@
     <link rel="stylesheet" href="style.css" class="style">
 </head>
 <body>
-    <div class="container">
-        <div class="board">
+    <div class="board">
+        <div class="column" id="todo">
             <h2>Todo</h2>
-            <div class="cards">
-                <p class="item">Learn React</p>
-                <p class="item">Learn Items</p>
-            </div>
-            <button id="add-task-button">Add Task</button>
+            <div class="tasks" id="todo-tasks"></div>
+            <input
+                type="text"
+                class="task-input"
+                id="todo-input"
+                placeholder="Add a task"
+            />
+            <button class="add-task">Add Task</button>
         </div>
 
         <div class="board">
-            <h2>In Progress</h2>
+        <div class="column" id="doing">
+            <h2>Doing</h2>
+            <div class="tasks" id="doing-tasks"></div>
+            <input
+                type="text"
+                class="task-input"
+                id="doing-input"
+                placeholder="Add a task"
+            />
+            <button class="add-task">Add Task</button>
         </div>
 
         <div class="board">
-            <h2>Completed</h2>
+        <div class="column" id="done">
+            <h2>Done</h2>
+            <div class="tasks" id="done-tasks"></div>
+            <input
+                type="text"
+                class="task-input"
+                id="done-input"
+                placeholder="Add a task"
+            />
+            <button class="add-task">Add Task</button>
         </div>
-        
+
     </div>
 
     <script src="script.js"></script>
