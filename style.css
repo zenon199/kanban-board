@@ -85,3 +85,17 @@ body {
     margin-top: 20px;
     letter-spacing: 1px;
 }
+
+.card {
+    background-color: rgb(239, 150, 150);
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    color: black;
+    cursor: grab;
+    transition: all .3s ease;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
