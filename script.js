@@ -1,5 +1,6 @@
 
 //let draggedCard = null;
+let rightClickedCard = null;
 function addTask(colId) {
     const input = document.getElementById(`${colId}-input`);
     taskText = input.value.trim();
@@ -18,6 +19,11 @@ function createTaskEle(text) {
     taskEl.draggable = true;
     taskEl.addEventListener("dragstart", dragStart)
     taskEl.addEventListener("dragend", dragEnd)
+    taskEl.addEventListener("contextmenu", function (e) {
+        e.preventDefault();
+        rightClickedCard = this;
+        showContextMenu(e.pageX, e.pageY);
+    })
     return taskEl;
 }
 
@@ -42,4 +48,30 @@ function dragOver(event) {
     event.preventDefault();
     const draggedCard = document.getElementsByClassName("dragging")[0]
     this.appendChild(draggedCard);
+}
+
+const contextMenu = document.querySelector(".context-menu");
+function showContextMenu(x, y) { 
+    contextMenu.style.left = `${x}px`;
+    contextMenu.style.top = `${y}px`;
+    contextMenu.style.display = "block";
+}
+
+document.addEventListener("click", () => {
+    contextMenu.style.display = "none";
+});
+
+function editTask() {
+    if (rightClickedCard !== null) {
+        const newTask = prompt("Edit your task:", rightClickedCard.textContent);
+        if (newTask !== null && newTask.trim() !== "") {
+            rightClickedCard.textContent = newTask.trim();
+        }
+    } 
+}
+
+function deleteTask() {
+    if(rightClickedCard !== null) {
+        rightClickedCard.remove();
+    }
 }
