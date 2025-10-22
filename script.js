@@ -13,6 +13,8 @@ function addTask(colId) {
     const taskEle = createTaskEle(taskText, taskDate);
     document.getElementById(`${colId}-tasks`).appendChild(taskEle);
     input.value = "";
+    updateTaskCounts(colId);
+    console.log(colId)
 }
 
 function createTaskEle(text, taskDate) {
@@ -41,6 +43,9 @@ function dragStart() {
 function dragEnd() {
     this.classList.remove("dragging");
     //draggedCard = null;
+    ["todo", "doing", "done"].forEach((colId) => {
+        updateTaskCounts(colId);
+    })
 }
 
 const columns = document.querySelectorAll(".tasks");
@@ -75,7 +80,15 @@ function editTask() {
 }
 
 function deleteTask() {
-    if(rightClickedCard !== null) {
+    if (rightClickedCard !== null) {
+        const colId = rightClickedCard.parentElement.id.replace("-tasks", "");
         rightClickedCard.remove();
+        updateTaskCounts(colId);
     }
+    
+}
+
+function updateTaskCounts(colId) {
+    const count = document.querySelectorAll(`#${colId}-tasks .card`).length;
+    document.getElementById(`${colId}-count`).textContent = count;
 }
