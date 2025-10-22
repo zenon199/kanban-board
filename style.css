@@ -119,3 +119,10 @@ body {
     color: #222831;
 
 } 
+.time {
+    text-align: end;
+    font-style: italic;
+    color: #000;
+    font-size: 12px;
+    display: block;
+}

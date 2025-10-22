@@ -1,20 +1,24 @@
 
 //let draggedCard = null;
 let rightClickedCard = null;
+
 function addTask(colId) {
     const input = document.getElementById(`${colId}-input`);
     taskText = input.value.trim();
 
     if (taskText === "") return;
 
-    const taskEle = createTaskEle(taskText);
+    const taskDate = new Date().toLocaleString();
+
+    const taskEle = createTaskEle(taskText, taskDate);
     document.getElementById(`${colId}-tasks`).appendChild(taskEle);
     input.value = "";
 }
 
-function createTaskEle(text) {
+function createTaskEle(text, taskDate) {
     const taskEl = document.createElement("div");
-    taskEl.textContent = text;
+    taskEl.innerHTML = `<span> ${text}</span> </br> <small class="time"> ${taskDate} </small>`
+    //taskEl.textContent = text;
     taskEl.classList.add("card");
     taskEl.draggable = true;
     taskEl.addEventListener("dragstart", dragStart)
