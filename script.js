@@ -2,6 +2,8 @@
 //let draggedCard = null;
 let rightClickedCard = null;
 
+document.addEventListener("DOMContentLoaded", loadTasksLocalStorage);
+
 function addTask(colId) {
     const input = document.getElementById(`${colId}-input`);
     taskText = input.value.trim();
@@ -14,7 +16,7 @@ function addTask(colId) {
     document.getElementById(`${colId}-tasks`).appendChild(taskEle);
     input.value = "";
     updateTaskCounts(colId);
-    console.log(colId)
+    saveTasksLocalStorage(colId, taskText, taskDate);
 }
 
 function createTaskEle(text, taskDate) {
@@ -45,6 +47,7 @@ function dragEnd() {
     //draggedCard = null;
     ["todo", "doing", "done"].forEach((colId) => {
         updateTaskCounts(colId);
+        updateTasksLocalStorage();
     })
 }
 
@@ -75,6 +78,7 @@ function editTask() {
         const newTask = prompt("Edit your task:", rightClickedCard.textContent);
         if (newTask !== null && newTask.trim() !== "") {
             rightClickedCard.textContent = newTask.trim();
+            updateTasksLocalStorage()
         }
     } 
 }
@@ -84,6 +88,7 @@ function deleteTask() {
         const colId = rightClickedCard.parentElement.id.replace("-tasks", "");
         rightClickedCard.remove();
         updateTaskCounts(colId);
+        updateTasksLocalStorage()
     }
     
 }
@@ -91,4 +96,31 @@ function deleteTask() {
 function updateTaskCounts(colId) {
     const count = document.querySelectorAll(`#${colId}-tasks .card`).length;
     document.getElementById(`${colId}-count`).textContent = count;
+}
+
+function saveTasksLocalStorage(colId, taskText, taskDate) {
+    const tasks = JSON.parse(localStorage.getItem(colId)) || []
+    tasks.push({ text: taskText, date: taskDate })
+    localStorage.setItem(colId, JSON.stringify(tasks));
+}
+function loadTasksLocalStorage() {
+    ["todo", "doing", "done"].forEach((colId) => {
+        const tasks = JSON.parse(localStorage.getItem(colId) || [])
+        tasks.forEach(({ text, date }) => {
+            const taskEle = createTaskEle(text, date)
+            document.getElementById(`${colId}-tasks`).appendChild(taskEle)
+        })
+        updateTaskCounts(colId)
+    })
+}
+function updateTasksLocalStorage() {
+    ["todo", "doing", "done"].forEach((colId) => {
+        const tasks = []
+        document.querySelectorAll(`#${colId}-tasks .card`).forEach((card) => {
+            const taskText = card.querySelector("span").textContent
+            const taskDate = card.querySelector("small").textContent
+            tasks.push({ text: taskText, date: taskDate})
+        })
+        localStorage.setItem(colId, JSON.stringify(tasks))
+    })
 }
